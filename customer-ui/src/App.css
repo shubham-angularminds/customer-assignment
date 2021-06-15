@@ -1,0 +1,38 @@
+.form {
+  background-color: rgb(248, 245, 252);
+  padding: 50px;
+  box-shadow: 0 4px 16px 0 rgb(0 0 0 / 5%);
+  margin-bottom: 50px;
+}
+
+.navbar-light {
+  background-color: #f8f5fc !important;
+}
+
+.navbar {
+  color: #000 !important;
+  font-weight: 700;
+}
+
+.form h3 {
+  color: rgba(0, 0, 0, 0.5) !important;
+  font-weight: 700;
+}
+
+.profile-card {
+  background-color: rgb(248, 245, 252) !important;
+  box-shadow: 0 4px 16px 0 rgb(0 0 0 / 5%) !important;
+  border-radius: 20px !important;
+}
+
+#icons {
+  cursor: pointer !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgb(248, 245, 252) !important;
+}
+
+.error-text {
+  color: red;
+}
