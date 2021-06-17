@@ -37,14 +37,12 @@ function CustomerForm(props) {
     defaultValues: defaultData,
   });
 
-  console.log("State: ", props);
-
   useEffect(() => {
     if (props.isEditing) {
       axios
         .get(`http://localhost:8080/api/customers/${id}`)
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
           setDefaultData(response.data);
           reset(response.data);
         })
@@ -68,12 +66,14 @@ function CustomerForm(props) {
   const onSubmit = (data, e) => {
     console.log(data);
     e.preventDefault();
+    //Convert Data into new formData object
     const formData = new FormData();
     const nform = serialize(data);
     console.log("Data :", data);
     for (let [key, value] of formData) {
       console.log(`${key}: ${value}`);
     }
+    //Updating Existing Customer
     if (props.isEditing) {
       console.log("Update Data", nform);
       if (isImageUpdated) {
@@ -99,7 +99,9 @@ function CustomerForm(props) {
         .catch((error) => {
           console.error("There was an error!", error);
         });
-    } else {
+    }
+    //Creating new Customer
+    else {
       nform.append("photo", img);
       axios
         .post("http://localhost:8080/api/customers/add", nform, {
@@ -276,38 +278,26 @@ function CustomerForm(props) {
           /> */}
         </Form.Group>
         <Row className="mt-5 justify-content-left">
-          <Col md={4}>
-            {props.isEditing ? (
-              <Row>
-                <Button className="ml-2" variant="dark" type="submit">
+          <Col>
+            <Row>
+              {props.isEditing ? (
+                <Button className="ml-3" variant="dark" type="submit">
                   Update
                 </Button>
-                <Button
-                  className="ml-2"
-                  variant="dark"
-                  type="button"
-                  onClick={redirect}
-                >
-                  Back
+              ) : (
+                <Button className="ml-3" variant="dark" type="submit">
+                  Submit
                 </Button>
-              </Row>
-            ) : (
-              <>
-                <Row>
-                  <Button className="ml-2" variant="dark" type="submit">
-                    Submit
-                  </Button>
-                  <Button
-                    className="ml-2"
-                    variant="dark"
-                    type="button"
-                    onClick={redirect}
-                  >
-                    Back
-                  </Button>
-                </Row>
-              </>
-            )}
+              )}
+              <Button
+                className="ml-2"
+                variant="dark"
+                type="button"
+                onClick={redirect}
+              >
+                Back
+              </Button>
+            </Row>
           </Col>
         </Row>
       </Form>

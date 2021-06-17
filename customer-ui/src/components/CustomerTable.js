@@ -31,7 +31,7 @@ function CustomerTable(props) {
       .then((response) => {
         console.log(response);
         NotificationManager.success(
-          "Cutomer Is Deleted Successfully",
+          "Customer Is Deleted Successfully",
           "Successful!",
           1000
         );

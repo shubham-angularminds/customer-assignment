@@ -28,8 +28,13 @@ function CustomerProfile() {
         <div className="col-md-6">
           <div class="card profile-card">
             <div class="card-body">
-              <button onClick={() => history.goBack()}>Back</button>
-
+              <Button
+                variant="dark"
+                type="button"
+                onClick={() => history.goBack()}
+              >
+                Back
+              </Button>
               <div class="d-flex flex-column align-items-center text-center">
                 <img
                   src={`http://localhost:8080/api/customers/photo/${id}`}
